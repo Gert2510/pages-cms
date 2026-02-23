@@ -16,6 +16,9 @@ COPY . .
 # Next.js collects anonymous telemetry data - disable it
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Dummy DATABASE_URL for build (Drizzle config needs it, real URL is set at runtime)
+ENV DATABASE_URL=postgresql://dummy:dummy@localhost:5432/dummy
+
 RUN npm run build
 
 # Stage 3: Production runner
